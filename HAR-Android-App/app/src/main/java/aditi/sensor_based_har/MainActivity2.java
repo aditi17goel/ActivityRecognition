@@ -11,8 +11,10 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        Bundle b = getIntent().getExtras();
+        int id = b.getInt("id");
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.progress_bar_biking);
-        progressBar.setProgress(MainActivity.prog_bik);
+        progressBar.setProgress(id);
     }
 
 

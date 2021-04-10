@@ -4,67 +4,72 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="#ededed"
     android:padding="0dp"
     tools:context="io.github.introml.activityrecognition.MainActivity">
-        <TableRow
-            android:id="@+id/title_row"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#7CB342"
-            android:padding="20dp"
-            android:textAlignment="center">
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/activity"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+    <TableRow
+        android:id="@+id/title_row"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#493ede"
+        android:padding="10dp"
+        android:textAlignment="center">
 
-        </TableRow>
+        <TextView
+            android:id="@+id/title"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/activity"
+            android:textAlignment="center"
+            android:textColor="#E8E7FA"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-        <TableRow
-            android:id="@+id/downstairs_row"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="20dp"
-            android:background="#A9BCC16F"
-            android:padding="20dp">
+    </TableRow>
 
-            <TextView
-                android:id="@+id/downstairs_title"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif"
-                android:text="@string/downstairs"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+    <TableRow
+        android:id="@+id/downstairs_row"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="10dp"
+        android:background="#857be9"
+        android:padding="10dp">
 
-        </TableRow>
+
+        <Button
+            android:id="@+id/but_down"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#857be9"
+            android:textColor="#C9C7F3"
+            android:text="@string/downstairs"/>
+
+    </TableRow>
 
         <TableRow
             android:id="@+id/jogging_row"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginTop="20dp"
-            android:background="#A9BCC16F"
-            android:padding="20dp">
+            android:background="#857be9"
+            android:padding="10dp">
 
-            <TextView
-                android:id="@+id/jogging_title"
+
+            <Button
+                android:id="@+id/but_jog"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/jogging"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:background="#857be9"
+                android:textColor="#C9C7F3"
+                android:text="@string/jogging" />
+
 
         </TableRow>
 
@@ -73,16 +78,19 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginTop="20dp"
-            android:background="#A9BCC16F"
-            android:padding="20dp">
+            android:background="#857be9"
+            android:padding="10dp">
 
-            <TextView
-                android:id="@+id/sitting_title"
+
+            <Button
+                android:id="@+id/but_sit"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/sitting"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:background="#857be9"
+                android:textColor="#C9C7F3"
+                android:text="@string/sitting" />
+
 
         </TableRow>
 
@@ -91,16 +99,19 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginTop="20dp"
-            android:background="#A9BCC16F"
-            android:padding="20dp">
+            android:background="#857be9"
+            android:padding="10dp">
 
-            <TextView
-                android:id="@+id/standing_title"
+
+            <Button
+                android:id="@+id/but_stand"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/standing"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:background="#857be9"
+                android:textColor="#C9C7F3"
+                android:text="@string/standing" />
+
 
         </TableRow>
 
@@ -109,16 +120,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
-            android:background="#A9BCC16F"
-            android:padding="20dp">
+            android:background="#857be9"
+            android:padding="10dp">
 
-            <TextView
-                android:id="@+id/upstairs_title"
+            <Button
+                android:id="@+id/but_up"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/upstairs"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:background="#857be9"
+                android:textColor="#C9C7F3"
+                android:text="@string/upstairs" />
+
 
         </TableRow>
 
@@ -127,16 +140,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
-            android:background="#A9BCC16F"
-            android:padding="20dp">
+            android:background="#857be9"
+            android:padding="10dp">
 
-            <TextView
-                android:id="@+id/walking_title"
+            <Button
+                android:id="@+id/but_walk"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/walking"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:background="#857be9"
+                android:textColor="#C9C7F3"
+                android:text="@string/walking" />
+
 
         </TableRow>
 
@@ -145,24 +160,19 @@
             android:layout_width="match_parent"
             android:layout_height="152dp"
             android:layout_marginTop="20dp"
-            android:background="#A9BCC16F"
-            android:padding="20dp">
+            android:background="#857be9"
+            android:padding="10dp">
 
-            <TextView
-                android:id="@+id/biking_title"
-                android:layout_weight="1"
-                android:text="@string/biking"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textStyle="bold" />
 
             <Button
-                android:id="@+id/button1"
-                android:layout_width="100dp"
+                android:id="@+id/but_bike"
+                android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#7CB342"
-                android:text="@string/see_progress" />
+                android:background="#857be9"
+                android:textColor="#C9C7F3"
+                android:text="@string/biking" />
+
 
         </TableRow>
 

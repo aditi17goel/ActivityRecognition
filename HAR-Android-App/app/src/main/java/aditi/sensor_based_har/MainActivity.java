@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableRow;
@@ -27,7 +26,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import aditi.sensor_based_har.HARClassifier;
-import aditi.sensor_based_har.R;
 
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener, TextToSpeech.OnInitListener {
@@ -92,11 +90,59 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button = (Button) findViewById(R.id.button1);
+        button = (Button) findViewById(R.id.but_bike);
         button.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openMainActivity2();
+                openMainActivity2(prog_bik);
+            }
+        });
+        button = (Button) findViewById(R.id.but_down);
+        button.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openMainActivity2(prog_down);
+            }
+        });
+
+        button = (Button) findViewById(R.id.but_up);
+        button.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openMainActivity2(prog_upst);
+            }
+        });
+
+        button = (Button) findViewById(R.id.but_stand);
+        button.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openMainActivity2(prog_stand);
+            }
+        });
+
+        button = (Button) findViewById(R.id.but_sit);
+        button.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openMainActivity2(prog_sit
+                );
+            }
+        });
+
+        button = (Button) findViewById(R.id.but_jog);
+        button.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openMainActivity2(prog_jog);
+            }
+        });
+
+        button = (Button) findViewById(R.id.but_walk);
+        button.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openMainActivity2(prog_walk);
             }
         });
         SharedPreferences getShared = getSharedPreferences("demo", MODE_PRIVATE);
@@ -119,13 +165,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         gx = new ArrayList<>(); gy = new ArrayList<>(); gz = new ArrayList<>();
         ma = new ArrayList<>(); ml = new ArrayList<>(); mg = new ArrayList<>();
 
-        bikingTextView = (TextView) findViewById(R.id.biking_title);
-        downstairsTextView = (TextView) findViewById(R.id.downstairs_title);
-        joggingTextView = (TextView) findViewById(R.id.jogging_title);
-        sittingTextView = (TextView) findViewById(R.id.sitting_title);
-        standingTextView = (TextView) findViewById(R.id.standing_title);
-        upstairsTextView = (TextView) findViewById(R.id.upstairs_title);
-        walkingTextView = (TextView) findViewById(R.id.walking_title);
 
         bikingTableRow = (TableRow) findViewById(R.id.biking_row);
         downstairsTableRow = (TableRow) findViewById(R.id.downstairs_row);
@@ -152,9 +191,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         textToSpeech = new TextToSpeech(this, this);
         textToSpeech.setLanguage(Locale.US);
     }
-    public void openMainActivity2() {
-        Intent intent = new Intent(this, MainActivity2.class);
-        startActivity(intent);
+    public void openMainActivity2(Integer prog) {
+
+        Intent i = new Intent(MainActivity.this, MainActivity2.class);
+        i.putExtra("id", prog);
+        startActivity(i);
     }
     @Override
     public void onInit(int status) {
@@ -284,54 +325,54 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private void setRowsColor(int idx) {
-        bikingTableRow.setBackgroundColor(Color.parseColor("#A9BCC16F"));
-        downstairsTableRow.setBackgroundColor(Color.parseColor("#A9BCC16F"));
-        joggingTableRow.setBackgroundColor(Color.parseColor("#A9BCC16F"));
-        sittingTableRow.setBackgroundColor(Color.parseColor("#A9BCC16F"));
-        standingTableRow.setBackgroundColor(Color.parseColor("#A9BCC16F"));
-        upstairsTableRow.setBackgroundColor(Color.parseColor("#A9BCC16F"));
-        walkingTableRow.setBackgroundColor(Color.parseColor("#A9BCC16F"));
+        bikingTableRow.setBackgroundColor(Color.parseColor("#A29AEE"));
+        downstairsTableRow.setBackgroundColor(Color.parseColor("#A29AEE"));
+        joggingTableRow.setBackgroundColor(Color.parseColor("#A29AEE"));
+        sittingTableRow.setBackgroundColor(Color.parseColor("#A29AEE"));
+        standingTableRow.setBackgroundColor(Color.parseColor("#A29AEE"));
+        upstairsTableRow.setBackgroundColor(Color.parseColor("#A29AEE"));
+        walkingTableRow.setBackgroundColor(Color.parseColor("#A29AEE"));
         SharedPreferences shrd = getSharedPreferences("demo", MODE_PRIVATE);
         SharedPreferences.Editor editor = shrd.edit();
 
         if(idx == 0){
-            bikingTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
+            bikingTableRow.setBackgroundColor(Color.parseColor("#493ede"));
             prog_bik += 1;
             editor.putInt("bike", prog_bik);
             editor.apply();
         }
         else if (idx == 1){
-            downstairsTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
+            downstairsTableRow.setBackgroundColor(Color.parseColor("#493ede"));
             prog_down += 1;
             editor.putInt("down", prog_down);
             editor.apply();
         }
         else if (idx == 2){
-            joggingTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
+            joggingTableRow.setBackgroundColor(Color.parseColor("#493ede"));
             prog_jog += 1;
             editor.putInt("jog", prog_jog);
             editor.apply();
         }
         else if (idx == 3){
-            sittingTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
+            sittingTableRow.setBackgroundColor(Color.parseColor("#493ede"));
             prog_sit += 1;
             editor.putInt("sit", prog_sit);
             editor.apply();
         }
         else if (idx == 4){
-            standingTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
+            standingTableRow.setBackgroundColor(Color.parseColor("#493ede"));
             prog_stand += 1;
             editor.putInt("stand", prog_stand);
             editor.apply();
         }
         else if (idx == 5){
-            upstairsTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
+            upstairsTableRow.setBackgroundColor(Color.parseColor("#493ede"));
             prog_upst += 1;
             editor.putInt("upst", prog_upst);
             editor.apply();
         }
         else if (idx == 6){
-            walkingTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
+            walkingTableRow.setBackgroundColor(Color.parseColor("#493ede"));
             prog_walk += 1;
             editor.putInt("walk", prog_walk);
             editor.apply();
