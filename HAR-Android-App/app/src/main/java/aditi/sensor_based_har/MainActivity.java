@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private static final int N_SAMPLES = 100;
     private static int prevIdx = -1;
-    private int progr=0;
 
     private static List<Float> ax;
     private static List<Float> ay;
@@ -81,13 +80,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button = (Button) findViewById(R.id.button1);
-        button.setOnClickListener( new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                openMainActivity2();
-            }
-        });
+        
         ax = new ArrayList<>(); ay = new ArrayList<>(); az = new ArrayList<>();
         lx = new ArrayList<>(); ly = new ArrayList<>(); lz = new ArrayList<>();
         gx = new ArrayList<>(); gy = new ArrayList<>(); gz = new ArrayList<>();
@@ -126,10 +119,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         textToSpeech = new TextToSpeech(this, this);
         textToSpeech.setLanguage(Locale.US);
     }
-    public void openMainActivity2() {
-        Intent intent = new Intent(this, MainActivity2.class);
-        startActivity(intent);
-    }
+
     @Override
     public void onInit(int status) {
         Timer timer = new Timer();
@@ -257,9 +247,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-    private void updateProgressBar(){
-        findViewById(R.id.progress_bar_walking).progress = progr;
-    }
+
     private void setRowsColor(int idx) {
         bikingTableRow.setBackgroundColor(Color.parseColor("#A9BCC16F"));
         downstairsTableRow.setBackgroundColor(Color.parseColor("#A9BCC16F"));
@@ -283,8 +271,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             upstairsTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
         else if (idx == 6){
             walkingTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
-            progr += 5;
-            updateProgressBar();
         }
     }
 
