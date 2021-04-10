@@ -2,6 +2,7 @@ package aditi.sensor_based_har;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TableRow;
@@ -27,10 +29,20 @@ import java.util.TimerTask;
 import aditi.sensor_based_har.HARClassifier;
 import aditi.sensor_based_har.R;
 
+
 public class MainActivity extends AppCompatActivity implements SensorEventListener, TextToSpeech.OnInitListener {
 
     private static final int N_SAMPLES = 100;
     private static int prevIdx = -1;
+
+
+    public static int prog_walk=0;
+    public int prog_sit=0;
+    public int prog_stand=0;
+    public int prog_jog=0;
+    public static int prog_bik=0;
+    public int prog_upst=0;
+    public int prog_down=0;
 
     private static List<Float> ax;
     private static List<Float> ay;
@@ -80,7 +92,28 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+        button = (Button) findViewById(R.id.button1);
+        button.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openMainActivity2();
+            }
+        });
+        SharedPreferences getShared = getSharedPreferences("demo", MODE_PRIVATE);
+        Integer val1 = getShared.getInt("walk", 0);
+        Integer val2 = getShared.getInt("sit", 0);
+        Integer val3 = getShared.getInt("stand", 0);
+        Integer val4 = getShared.getInt("bike", 0);
+        Integer val5 = getShared.getInt("jog", 0);
+        Integer val6 = getShared.getInt("upst", 0);
+        Integer val7 = getShared.getInt("down", 0);
+        prog_walk = val1;
+        prog_sit = val2;
+        prog_stand = val3;
+        prog_bik = val4;
+        prog_jog = val5;
+        prog_upst = val6;
+        prog_down = val7;
         ax = new ArrayList<>(); ay = new ArrayList<>(); az = new ArrayList<>();
         lx = new ArrayList<>(); ly = new ArrayList<>(); lz = new ArrayList<>();
         gx = new ArrayList<>(); gy = new ArrayList<>(); gz = new ArrayList<>();
@@ -119,7 +152,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         textToSpeech = new TextToSpeech(this, this);
         textToSpeech.setLanguage(Locale.US);
     }
-
+    public void openMainActivity2() {
+        Intent intent = new Intent(this, MainActivity2.class);
+        startActivity(intent);
+    }
     @Override
     public void onInit(int status) {
         Timer timer = new Timer();
@@ -247,7 +283,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-
     private void setRowsColor(int idx) {
         bikingTableRow.setBackgroundColor(Color.parseColor("#A9BCC16F"));
         downstairsTableRow.setBackgroundColor(Color.parseColor("#A9BCC16F"));
@@ -256,21 +291,50 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         standingTableRow.setBackgroundColor(Color.parseColor("#A9BCC16F"));
         upstairsTableRow.setBackgroundColor(Color.parseColor("#A9BCC16F"));
         walkingTableRow.setBackgroundColor(Color.parseColor("#A9BCC16F"));
+        SharedPreferences shrd = getSharedPreferences("demo", MODE_PRIVATE);
+        SharedPreferences.Editor editor = shrd.edit();
 
-        if(idx == 0)
+        if(idx == 0){
             bikingTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
-        else if (idx == 1)
+            prog_bik += 1;
+            editor.putInt("bike", prog_bik);
+            editor.apply();
+        }
+        else if (idx == 1){
             downstairsTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
-        else if (idx == 2)
+            prog_down += 1;
+            editor.putInt("down", prog_down);
+            editor.apply();
+        }
+        else if (idx == 2){
             joggingTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
-        else if (idx == 3)
+            prog_jog += 1;
+            editor.putInt("jog", prog_jog);
+            editor.apply();
+        }
+        else if (idx == 3){
             sittingTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
-        else if (idx == 4)
+            prog_sit += 1;
+            editor.putInt("sit", prog_sit);
+            editor.apply();
+        }
+        else if (idx == 4){
             standingTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
-        else if (idx == 5)
+            prog_stand += 1;
+            editor.putInt("stand", prog_stand);
+            editor.apply();
+        }
+        else if (idx == 5){
             upstairsTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
+            prog_upst += 1;
+            editor.putInt("upst", prog_upst);
+            editor.apply();
+        }
         else if (idx == 6){
             walkingTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
+            prog_walk += 1;
+            editor.putInt("walk", prog_walk);
+            editor.apply();
         }
     }
 
