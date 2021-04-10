@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ededed"
-        android:padding="0dp"
-        tools:context="io.github.introml.activityrecognition.MainActivity">
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#ededed"
+    android:padding="0dp"
+    tools:context="io.github.introml.activityrecognition.MainActivity">
         <TableRow
             android:id="@+id/title_row"
             android:layout_width="match_parent"
@@ -143,7 +143,7 @@
         <TableRow
             android:id="@+id/biking_row"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="152dp"
             android:layout_marginTop="20dp"
             android:background="#A9BCC16F"
             android:padding="20dp">
@@ -156,6 +156,15 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#7CB342"
+                android:text="@string/see_progress" />
+
         </TableRow>
+
     </TableLayout>
 </ScrollView>

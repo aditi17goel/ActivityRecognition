@@ -9,4 +9,6 @@
     <string name="upstairs">Upstairs</string>
     <string name="walking">Walking</string>
     <string name="biking">Biking</string>
+    <string name="button">Button</string>
+    <string name="see_progress">SEE PROGRESS</string>
 </resources>

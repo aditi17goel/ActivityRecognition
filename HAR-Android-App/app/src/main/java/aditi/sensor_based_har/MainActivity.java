@@ -1,6 +1,7 @@
 package aditi.sensor_based_har;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -10,6 +11,8 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private static final int N_SAMPLES = 100;
     private static int prevIdx = -1;
+    private int progr=0;
 
     private static List<Float> ax;
     private static List<Float> ay;
@@ -72,12 +76,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private aditi.sensor_based_har.HARClassifier classifier;
 
     private String[] labels = {"Biking", "Downstairs", "Jogging", "Sitting", "Standing", "Upstairs", "Walking"};
-
+    private Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        button = (Button) findViewById(R.id.button1);
+        button.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openMainActivity2();
+            }
+        });
         ax = new ArrayList<>(); ay = new ArrayList<>(); az = new ArrayList<>();
         lx = new ArrayList<>(); ly = new ArrayList<>(); lz = new ArrayList<>();
         gx = new ArrayList<>(); gy = new ArrayList<>(); gz = new ArrayList<>();
@@ -116,7 +126,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         textToSpeech = new TextToSpeech(this, this);
         textToSpeech.setLanguage(Locale.US);
     }
-
+    public void openMainActivity2() {
+        Intent intent = new Intent(this, MainActivity2.class);
+        startActivity(intent);
+    }
     @Override
     public void onInit(int status) {
         Timer timer = new Timer();
@@ -244,7 +257,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-
+    private void updateProgressBar(){
+        findViewById(R.id.progress_bar_walking).progress = progr;
+    }
     private void setRowsColor(int idx) {
         bikingTableRow.setBackgroundColor(Color.parseColor("#A9BCC16F"));
         downstairsTableRow.setBackgroundColor(Color.parseColor("#A9BCC16F"));
@@ -266,8 +281,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             standingTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
         else if (idx == 5)
             upstairsTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
-        else if (idx == 6)
+        else if (idx == 6){
             walkingTableRow.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorBlue, null));
+            progr += 5;
+            updateProgressBar();
+        }
     }
 
     private float[] toFloatArray(List<Float> list) {
