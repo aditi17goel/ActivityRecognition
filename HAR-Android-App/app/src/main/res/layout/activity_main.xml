@@ -16,7 +16,7 @@
         android:id="@+id/title_row"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#493ede"
+        android:background="#516763"
         android:padding="10dp"
         android:textAlignment="center">
 
@@ -37,7 +37,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginTop="10dp"
-        android:background="#857be9"
+        android:background="#fffafa"
         android:padding="10dp">
 
 
@@ -46,9 +46,9 @@
             android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#857be9"
-            android:textColor="#C9C7F3"
-            android:text="@string/downstairs"/>
+            android:background="#F2D491"
+            android:text="@string/downstairs"
+            android:textColor="#422E03" />
 
     </TableRow>
 
@@ -57,7 +57,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginTop="20dp"
-            android:background="#857be9"
+            android:background="#fffafa"
             android:padding="10dp">
 
 
@@ -66,9 +66,9 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#857be9"
-                android:textColor="#C9C7F3"
-                android:text="@string/jogging" />
+                android:background="#F2D491"
+                android:text="@string/jogging"
+                android:textColor="#422E03" />
 
 
         </TableRow>
@@ -78,7 +78,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginTop="20dp"
-            android:background="#857be9"
+            android:background="#fffafa"
             android:padding="10dp">
 
 
@@ -87,9 +87,9 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#857be9"
-                android:textColor="#C9C7F3"
-                android:text="@string/sitting" />
+                android:background="#F2D491"
+                android:text="@string/sitting"
+                android:textColor="#422E03" />
 
 
         </TableRow>
@@ -99,7 +99,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_marginTop="20dp"
-            android:background="#857be9"
+            android:background="#fffafa"
             android:padding="10dp">
 
 
@@ -108,9 +108,9 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#857be9"
-                android:textColor="#C9C7F3"
-                android:text="@string/standing" />
+                android:background="#F2D491"
+                android:text="@string/standing"
+                android:textColor="#422E03" />
 
 
         </TableRow>
@@ -120,7 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
-            android:background="#857be9"
+            android:background="#fffafa"
             android:padding="10dp">
 
             <Button
@@ -128,9 +128,9 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#857be9"
-                android:textColor="#C9C7F3"
-                android:text="@string/upstairs" />
+                android:background="#F2D491"
+                android:text="@string/upstairs"
+                android:textColor="#422E03" />
 
 
         </TableRow>
@@ -140,7 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
-            android:background="#857be9"
+            android:background="#fffafa"
             android:padding="10dp">
 
             <Button
@@ -148,9 +148,9 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#857be9"
-                android:textColor="#C9C7F3"
-                android:text="@string/walking" />
+                android:background="#F2D491"
+                android:text="@string/walking"
+                android:textColor="#422E03" />
 
 
         </TableRow>
@@ -160,7 +160,7 @@
             android:layout_width="match_parent"
             android:layout_height="152dp"
             android:layout_marginTop="20dp"
-            android:background="#857be9"
+            android:background="#fffafa"
             android:padding="10dp">
 
 
@@ -169,9 +169,9 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#857be9"
-                android:textColor="#C9C7F3"
-                android:text="@string/biking" />
+                android:background="#F2D491"
+                android:text="@string/biking"
+                android:textColor="#422E03" />
 
 
         </TableRow>

@@ -325,54 +325,54 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private void setRowsColor(int idx) {
-        bikingTableRow.setBackgroundColor(Color.parseColor("#A29AEE"));
-        downstairsTableRow.setBackgroundColor(Color.parseColor("#A29AEE"));
-        joggingTableRow.setBackgroundColor(Color.parseColor("#A29AEE"));
-        sittingTableRow.setBackgroundColor(Color.parseColor("#A29AEE"));
-        standingTableRow.setBackgroundColor(Color.parseColor("#A29AEE"));
-        upstairsTableRow.setBackgroundColor(Color.parseColor("#A29AEE"));
-        walkingTableRow.setBackgroundColor(Color.parseColor("#A29AEE"));
+        bikingTableRow.setBackgroundColor(Color.parseColor("#CF9823"));
+        downstairsTableRow.setBackgroundColor(Color.parseColor("#CF9823"));
+        joggingTableRow.setBackgroundColor(Color.parseColor("#CF9823"));
+        sittingTableRow.setBackgroundColor(Color.parseColor("#CF9823"));
+        standingTableRow.setBackgroundColor(Color.parseColor("#CF9823"));
+        upstairsTableRow.setBackgroundColor(Color.parseColor("#CF9823"));
+        walkingTableRow.setBackgroundColor(Color.parseColor("#CF9823"));
         SharedPreferences shrd = getSharedPreferences("demo", MODE_PRIVATE);
         SharedPreferences.Editor editor = shrd.edit();
 
         if(idx == 0){
-            bikingTableRow.setBackgroundColor(Color.parseColor("#493ede"));
+            bikingTableRow.setBackgroundColor(Color.parseColor("#586F6B"));
             prog_bik += 1;
             editor.putInt("bike", prog_bik);
             editor.apply();
         }
         else if (idx == 1){
-            downstairsTableRow.setBackgroundColor(Color.parseColor("#493ede"));
+            downstairsTableRow.setBackgroundColor(Color.parseColor("#586F6B"));
             prog_down += 1;
             editor.putInt("down", prog_down);
             editor.apply();
         }
         else if (idx == 2){
-            joggingTableRow.setBackgroundColor(Color.parseColor("#493ede"));
+            joggingTableRow.setBackgroundColor(Color.parseColor("#586F6B"));
             prog_jog += 1;
             editor.putInt("jog", prog_jog);
             editor.apply();
         }
         else if (idx == 3){
-            sittingTableRow.setBackgroundColor(Color.parseColor("#493ede"));
+            sittingTableRow.setBackgroundColor(Color.parseColor("#586F6B"));
             prog_sit += 1;
             editor.putInt("sit", prog_sit);
             editor.apply();
         }
         else if (idx == 4){
-            standingTableRow.setBackgroundColor(Color.parseColor("#493ede"));
+            standingTableRow.setBackgroundColor(Color.parseColor("#586F6B"));
             prog_stand += 1;
             editor.putInt("stand", prog_stand);
             editor.apply();
         }
         else if (idx == 5){
-            upstairsTableRow.setBackgroundColor(Color.parseColor("#493ede"));
+            upstairsTableRow.setBackgroundColor(Color.parseColor("#586F6B"));
             prog_upst += 1;
             editor.putInt("upst", prog_upst);
             editor.apply();
         }
         else if (idx == 6){
-            walkingTableRow.setBackgroundColor(Color.parseColor("#493ede"));
+            walkingTableRow.setBackgroundColor(Color.parseColor("#586F6B"));
             prog_walk += 1;
             editor.putInt("walk", prog_walk);
             editor.apply();
