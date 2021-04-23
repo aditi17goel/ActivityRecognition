@@ -136,8 +136,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         button.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openMainActivity2(prog_sit
-                );
+                openMainActivity2(prog_sit);
             }
         });
 
