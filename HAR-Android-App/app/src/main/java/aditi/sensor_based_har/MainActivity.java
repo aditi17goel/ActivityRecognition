@@ -18,9 +18,11 @@ import android.widget.Button;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.support.v7.app.ActionBar;
+import android.widget.Toast;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
@@ -28,6 +30,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import aditi.sensor_based_har.HARClassifier;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener, TextToSpeech.OnInitListener {
@@ -64,15 +69,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Sensor mAccelerometer;
     private Sensor mGyroscope;
     private Sensor mLinearAcceleration;
-
-
-    private TextView bikingTextView;
-    private TextView downstairsTextView;
-    private TextView joggingTextView;
-    private TextView sittingTextView;
-    private TextView standingTextView;
-    private TextView upstairsTextView;
-    private TextView walkingTextView;
 
     private TableRow bikingTableRow;
     private TableRow downstairsTableRow;
@@ -324,14 +320,43 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     max = results[i];
                 }
             }
-
+            sendData(idx);
             setRowsColor(idx);
-
             ax.clear(); ay.clear(); az.clear();
             lx.clear(); ly.clear(); lz.clear();
             gx.clear(); gy.clear(); gz.clear();
             ma.clear(); ml.clear(); mg.clear();
         }
+    }
+
+    private void sendData(int idx) {
+        String activity = "Biking";
+        if(idx == 1)activity = "Downstairs";
+        else if(idx == 2)activity = "Jogging";
+        else if(idx == 3)activity = "Sitting";
+        else if(idx == 4)activity = "Standing";
+        else if(idx == 5)activity = "Upstairs";
+        else if(idx == 6)activity = "Walking";
+        Call<ResponseModel> call = RetrofitClient.getInstance().getAPI().sendData(activity);
+        call.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                //This method will be called on successful server call
+
+                ResponseModel obj = response.body();
+
+                Toast.makeText(MainActivity.this, obj.getRemarks(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+
+                //This method will called in case of failure
+
+                Toast.makeText(MainActivity.this, "Network Failed", Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 
     private void setRowsColor(int idx) {
