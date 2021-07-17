@@ -14,7 +14,7 @@ public interface APIsInterface {
     @FormUrlEncoded
     @POST("save_user.php")
     Call<ResponseModel> sendData(
-            @Field("Activity") String activity
+            @Field("ACTIVITY") String activity
     );
 
 

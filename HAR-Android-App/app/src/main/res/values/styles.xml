@@ -11,4 +11,8 @@
         <item name="android:indeterminateOnly">false</item>
         <item name="android:progressDrawable">@drawable/cirle</item>
     </style>
+    <style name="CircularRing">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/circle2</item>
+    </style>
 </resources>

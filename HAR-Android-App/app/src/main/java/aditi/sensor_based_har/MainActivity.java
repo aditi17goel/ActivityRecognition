@@ -101,14 +101,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         button.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openMainActivity2(prog_bik);
+                openMainActivity2(prog_bik, 14);
             }
         });
         button = (Button) findViewById(R.id.but_down);
         button.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openMainActivity2(prog_down);
+                openMainActivity2(prog_down, 7.5);
             }
         });
 
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         button.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openMainActivity2(prog_upst);
+                openMainActivity2(prog_upst, 15.0);
             }
         });
 
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         button.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openMainActivity2(prog_stand);
+                openMainActivity2(prog_stand, 3.5);
             }
         });
 
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         button.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openMainActivity2(prog_sit);
+                openMainActivity2(prog_sit, 3);
             }
         });
 
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         button.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openMainActivity2(prog_jog);
+                openMainActivity2(prog_jog, 8.0);
             }
         });
 
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         button.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                openMainActivity2(prog_walk);
+                openMainActivity2(prog_walk,5);
             }
         });
         SharedPreferences getShared = getSharedPreferences("demo", MODE_PRIVATE);
@@ -197,10 +197,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         textToSpeech = new TextToSpeech(this, this);
         textToSpeech.setLanguage(Locale.US);
     }
-    public void openMainActivity2(Integer prog) {
+    public void openMainActivity2(Integer prog, double met) {
 
         Intent i = new Intent(MainActivity.this, MainActivity2.class);
         i.putExtra("id", prog);
+        i.putExtra("met", met);
         startActivity(i);
     }
     @Override
@@ -337,6 +338,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         else if(idx == 4)activity = "Standing";
         else if(idx == 5)activity = "Upstairs";
         else if(idx == 6)activity = "Walking";
+       // Toast.makeText(getApplicationContext(),activity,Toast.LENGTH_SHORT).show();
+
         Call<ResponseModel> call = RetrofitClient.getInstance().getAPI().sendData(activity);
         call.enqueue(new Callback<ResponseModel>() {
             @Override
@@ -352,8 +355,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             public void onFailure(Call<ResponseModel> call, Throwable t) {
 
                 //This method will called in case of failure
-
-                Toast.makeText(MainActivity.this, "Network Failed", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Network Failed", Toast.LENGTH_SHORT).show();
 
             }
         });

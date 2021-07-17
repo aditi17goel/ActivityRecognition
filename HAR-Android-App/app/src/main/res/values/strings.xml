@@ -13,4 +13,6 @@
     <string name="see_progress">SEE PROGRESS</string>
     <string name="textview">TextView</string>
     <string name="number_of_times_detected">Number of times detected</string>
+    <string name="calories_burnt">Calories burnt</string>
+    <string name="duration">Duration</string>
 </resources>
