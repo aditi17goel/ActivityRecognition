@@ -1,6 +1,8 @@
 # ActivityRecognition
-
-APK File: https://drive.google.com/drive/folders/14mL7ry5cVXC1xWURVs1hXkoXVVscl9-N?usp=sharing
+ - Detects 7 Human Activities (Jogging, Walking, Sitting, Standing, Upstairs, Downstairs, Biking) with the help of motion sensors in smartphones using an LSTM Model.
+ - Keeps track of the duration and calories burnt for each activity.
+ - Achieved an accuracy of 98% and very low latency.
+#### APK File: https://drive.google.com/drive/folders/14mL7ry5cVXC1xWURVs1hXkoXVVscl9-N?usp=sharing
 
 ## Detects 7 Human Activities
 ![7 Activities](https://github.com/aditi17goel/ActivityRecognition/blob/main/Images/activities.png)
